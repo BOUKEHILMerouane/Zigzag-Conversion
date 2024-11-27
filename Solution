@@ -1,0 +1,55 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        int i = 0;
+        int row = 0;
+        boolean Dec = true; 
+        ArrayList<StringBuilder> StrRows = new ArrayList<>();
+        String Modified;
+        StringBuilder result = new StringBuilder();
+
+        while (i<numRows){
+           StrRows.add(new StringBuilder());
+           i++; 
+        }
+
+        if (numRows==1){
+            return s;
+
+        }
+       
+        i = 0;
+
+        while (i<s.length()){
+            //System.out.println("------------------------");
+            //System.out.println("row : "+row);
+            //System.out.println("StrRows : "+StrRows);
+            StrRows.get(row).append(s.charAt(i));
+           // System.out.println("Modified : "+Modified);
+           // StrRows.set(row, Modified);
+            
+            
+            if (row==numRows-1){
+                Dec = false;
+            }
+            else if (row==0){
+                Dec = true;
+            }
+            if (Dec){
+                row++;
+            }
+            else{
+                row--;
+            }
+            i++;
+        }
+
+        System.out.println("#######################");
+        for (StringBuilder str : StrRows){
+            result.append(str);
+          //  System.out.println("str : "+str);
+           // System.out.println("------------------------");
+        }
+
+        return result.toString();
+    }
+}
